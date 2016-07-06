@@ -88,7 +88,7 @@ if [ "$1" = 'postgres' ]; then
 			echo
 		done
 
-		sleep 5
+		sleep 3
 		gosu postgres pg_ctl -D "$PGDATA" -m fast -w stop
 
 		echo

@@ -6,7 +6,9 @@ ENV POSTGIS_VER 2.2
 
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates wget python-pip curl build-essential
 
-RUN echo "deb [arch=amd64] http://packages.2ndquadrant.com/pglogical/apt/ trusty-2ndquadrant main" > /etc/apt/sources.list.d/2ndquadrant.list
+RUN \
+  echo "deb [arch=amd64] http://packages.2ndquadrant.com/pglogical/apt/ jessie-2ndquadrant main\n" \
+    > /etc/apt/sources.list.d/2ndquadrant.list
 
 RUN wget --quiet -O - http://packages.2ndquadrant.com/pglogical/apt/AA7A6805.asc | apt-key add - && apt-get update
 
@@ -21,7 +23,10 @@ RUN cd / && mkdir zombodb && cd zombodb \
 RUN pip install pgxnclient && pgxn install temporal_tables
 
 RUN apt-get install -y --no-install-recommends postgresql-9.5-postgis-${POSTGIS_VER}
-RUN apt-get install -y --no-install-recommends postgresql-9.5-pglogical postgresql-9.5-pglogical-output
+
+RUN apt-get install -y --no-install-recommends \
+  postgresql-$PG_MAJOR-pglogical \
+  postgresql-$PG_MAJOR-pglogical-output
 
 # Cleanup
 RUN apt-get update -y -qq --fix-missing \
