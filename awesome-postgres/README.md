@@ -7,6 +7,7 @@ Postgres bundled with modern extensions
 - [pglogical 1.1.2](https://2ndquadrant.com/en/resources/pglogical/)
 - [pgxn](http://pgxn.org/)
 - [temporal_tables](http://pgxn.org/dist/temporal_tables/)
+- [pgaudit](https://github.com/pgaudit/pgaudit)
 
 ## License
 

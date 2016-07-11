@@ -36,6 +36,9 @@ RUN apt-get update -y -qq --fix-missing \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /tmp/pgaudit && cd /tmp/pgaudit && curl -L https://github.com/pgaudit/pgaudit/archive/1.0.4.tar.gz | tar xz --strip 1
+RUN cd /tmp/pgaudit && USE_PGXS=1 make -s check && USE_PGXS=1 make install
+
 # Configuration
 COPY config/postgresql.conf "/usr/share/postgresql/${PG_MAJOR}/postgresql.conf.sample"
 COPY config/pg_hba.conf "/usr/share/postgresql/${PG_MAJOR}/pg_hba.conf"
