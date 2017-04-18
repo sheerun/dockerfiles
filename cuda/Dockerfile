@@ -4,4 +4,4 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
 
-RUN apt-get -y install module-init-tools curl vim && apt-get clean
+RUN apt-get -y install module-init-tools git curl vim sudo && apt-get clean
