@@ -4,4 +4,7 @@ RUN apt-get update && apt-get install -y libnss3 libxss1 libasound2 libpangocair
 
 RUN npm install -g yarn
 
-RUN yarn global add critical@1.1.0
+
+RUN npm init -f && yarn add critical@1.1.0 --no-lockfile && rm -rf node_modules
+
+RUN npm install --save critical@1.1.0 && rm -rf node_modules package-lock.json package.json
